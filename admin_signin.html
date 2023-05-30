@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>대교몰 관리자 로그인</title>
+
+    <!-- vendor css -->
+    <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+		<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- comp css -->
+    <link rel="stylesheet" href="css/qveyadmin.css">
+    <link rel="stylesheet" href="css/qveyadmin-white.css">
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+
+  <body>
+
+    <div class="d-flex align-items-center justify-content-center ht-100v">
+      <img src="img/admin_bg.jpg" class="wd-100p ht-100p object-fit-cover" alt="">
+      <div class="overlay-body bg-black-6 d-flex align-items-center justify-content-center">
+        <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 rounded bd bd-white-2 bg-black-7">
+          <div class="signin-logo tx-center tx-28 tx-bold tx-white"><span class="tx-primary">대교몰</span>&nbsp;<span class="tx-normal">관리자 로그인</span></div>
+          <div class="tx-white-5 tx-center mg-b-60">Daekyo, MobileE&MAd Collaboration</div>
+
+          <div class="form-group">
+            <input id="dkmId" type="text" class="form-control fc-outline-dark" placeholder="아이디" onkeyup="if(window.event.keyCode==13){signInTemp()}">
+          </div>
+          <div class="form-group">
+            <input id="dkmPw" type="password" class="form-control fc-outline-dark" placeholder="비밀번호" onkeyup="if(window.event.keyCode==13){signInTemp()}">
+            <a href="javascript:void(0)" class="tx-primary tx-12 d-block mg-t-10 tx-center">패스워드 분실</a>
+          </div>
+          <button onclick="signInTemp()" type="submit" class="btn btn-primary btn-block">로그인</button>
+
+          <div class="mg-t-60 tx-center">로그인 없이&nbsp;<a href="javascript:void(0)" class="tx-primary">대교몰 페이지</a>&nbsp;바로가기</div>
+        </div><!-- login-wrapper -->
+      </div><!-- overlay-body -->
+    </div><!-- d-flex -->
+
+    <div id="loginModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content tx-size-sm">
+            <div class="modal-body tx-center pd-y-20 pd-x-20">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                <i class="icon icon ion-ios-close-outline tx-100 tx-danger lh-1 mg-t-20 d-inline-block"></i>
+                <h4 class="tx-danger  tx-semibold mg-b-20">Error: 항목을 처리할 수 없습니다</h4>
+                <p id="loginModalCopy" class="mg-b-20 mg-x-20">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
+                <button type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20" data-dismiss="modal" aria-label="Close">
+                Continue</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/qvey.js"></script>
+    <script src="js/modal.js"></script>
+    <script>
+        function signInTemp(){
+            console.log('ok');
+            if ($('#dkmId').val() == 'admin' && $('#dkmPw').val() == '1234qwer' ){
+                window.location = 'admin_index.html';
+            } else if( $('#dkmId').val() == '' || $('#dkmPw').val() == '') {
+              loginModal('아이디 혹은 비밀번호를 입력해주세요.');
+            } else {
+              loginModal('잘못된 계정 정보 입니다.');
+            }
+        }
+    </script>
+  </body>
+</html>

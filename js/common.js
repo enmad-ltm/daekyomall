@@ -263,7 +263,7 @@ function joinStatPrint (stVal){
         } else if (passA != passC){
             modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
         } else if (passA == passC){
-            modalOpen("passChkT",'','','삭제되었습니다.');
+            modalOpen('rmvConfirm');
         }
         // 삭제 문장 추가
         break;
