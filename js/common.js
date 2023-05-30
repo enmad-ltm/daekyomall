@@ -230,8 +230,11 @@ function joinStatPrint (stVal){
   function passChkFn (chkType){
     var passA = $('#passA').val();
     var passB = $('#passB').val();
-    var passC = 'asdf'; // 임시 패스워드
-    // 추후 저장된 각 패스워드 서버 로딩 필요
+    var passC = 'asdf'; // 임시 패스워드 => 추후 저장된 각 패스워드 서버 로딩 필요
+    var filePath = 'upload_file/'; // 임시 업로드파일 경로
+    var fileName = 'example.xlsx'; // 임시 업로드파일명
+    var adminStat = 'n'; // 관리자의 경우 y로 업데이트
+    // 업로드파일 있을 경우 파일 경로 로딩, 매칭 필요
     switch (chkType) {
       case 'saveNew': // 신규 주문 등록
       // !필수 항목 작성 검증 추가 필요
@@ -264,6 +267,34 @@ function joinStatPrint (stVal){
         }
         // 삭제 문장 추가
         break;
+    case 'download': // 기 업로드된 파일 다운로드
+        if(passA == '' && adminStat == 'n') {
+            modalOpen("passChkF","Error: blank", "파일을 다운로드 하시려면 비밀번호를 입력해주세요.");
+        } else if (passA !== passC && adminStat == 'n') {
+            modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
+        } else if (passA == passC && (adminStat == 'n' || adminStat == 'y')) {
+            // 다운로드 동작 추가, java header 지정 내용 참고 https://krepo.tistory.com/3 혹은 다른방식 사용해도 무관
+            console.log(filePath+fileName);
+            $.fileDownload(filePath+fileName, {
+                httpMethod: "POST",
+                successCallback: function (url) {
+                    alert('성공');
+                },
+                failCallback: function() {
+                    alert('관리자에게 문의 주세요.');
+                }
+            });
+        } else if(adminStat == 'y') {
+            $.fileDownload(filePath+fileName, {
+                httpMethod: "POST",
+                successCallback: function () {
+                    alert('성공');
+                },
+                failCallback: function() {
+                    alert('관리자에게 문의 주세요.');
+                }
+            });
+        }
     }
   }
 
