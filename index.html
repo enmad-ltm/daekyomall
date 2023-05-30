@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <meta property="og:image" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracketplus/img/bracketplus-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <title>대교몰(사용자)</title>
+
+    <!-- vendor css -->
+    <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+		<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- comp css -->
+    <link rel="stylesheet" href="css/qveyadmin.css">
+    <link rel="stylesheet" href="css/qveyadmin-white.css">
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+
+  <body>
+    <!-- ########## START: MAIN PANEL ########## -->
+    <div class="br-mainpanel kr-font">
+      <div class="br-pageheader">
+        <nav class="breadcrumb pd-0 mg-0 tx-12">
+          <img class="mg-r-10" src="img/daekyo_ci.png" alt="" /><img src="img/syscuss_ci.png" alt="">
+        </nav>
+      </div><!-- br-pageheader -->
+      <div class="br-pagetitle">
+        <i class="icon ion-ios-body-outline"></i>
+        <div>
+          <h4>대교몰 쿠폰 주문 접수</h4>
+          <p class="mg-b-0">이곳은 대교몰 쿠폰 주문 접수 게시판입니다. 임직원분들을 포함한 외부에서의 접근을 제한하고 있으니 양해 부탁드립니다. </p>
+        </div>
+      </div><!-- d-flex -->
+      <div class="br-pagebody">
+        <div class="br-section-wrapper pd-b-0-force">
+          <form class="row pos-relative">
+            <div class="col-lg-2 col-md-6 col-sm-6 pd-l-0">
+              <div class="form-group">
+                <label class="form-control-label">조회기간</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="icon ion-calendar tx-16 lh-0 op-6"></i>
+                    </div>
+                  </div>
+                  <input id="searchDateA" type="text" class="form-control fc-datepicker" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+              <div class="form-group">
+                <label class="form-control-label">&nbsp;</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="icon ion-calendar tx-16 lh-0 op-6"></i>
+                    </div>
+                  </div>
+                  <input id="searchDateB" type="text" class="form-control fc-datepicker" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-5 col-sm-5">
+              <div class="form-group mg-b-10-force">
+                <label class="form-control-label">검색조건</label>
+                <select class="form-control select2 select2-hidden-accessible" data-placeholder="select" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                  <option label="Select"></option>
+                  <option value="num">순번</option>
+                  <option value="tel">부서명(센터명)</option>
+                  <option value="tname">주문자</option>
+                  <option value="pname">제목</option>
+                  <option value="jumin">진행사항</option>
+                  <option value="email">첨부파일</option>
+                </select>
+                <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="2" style="width: 351.984px;">
+                  <span class="selection">
+                    <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-42re-container">
+                      <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                    </span>
+                  </span>
+                  <span class="dropdown-wrapper" aria-hidden="true"></span>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-5 col-sm-5">
+              <div class="form-group">
+                <label class="form-control-label">검색어</label>
+                <input class="form-control" type="text" value="" placeholder="Search">
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 pd-r-0">
+              <div class="form-group">
+                <label class="form-control-label">&nbsp;</label>
+                <button class="btn btn-primary wd-100p ">검색</button>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between wd-100p mg-b-10">
+              <div class="cnt mg-y-20">총 <span class="text-primary">123</span>건이 있습니다.</div>
+              <div id="eventCreate" onclick="go2path('cont_new')" class="d-flex btn btn-outline-light"><i class="icon ion-ios-compose-outline tx-16 mg-r-4"></i> 신규 등록</div>
+            </div>
+            <!-- ######################################################## TABELE ######################################################## -->
+            <div class="bd bd-gray-300 rounded table-responsive applicant-tbl-wrap">
+              <table id="compMem" class="table table-hover mg-b-0 applicant-tbl">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox"></th>
+                    <th>순번</th>
+                    <th>주문일</th>
+                    <th>부서명(센터명)</th>
+                    <th>주문자</th>
+                    <th>제목</th>
+                    <th>진행사항</th>
+                    <th>완료일</th>
+                    <th>첨부파일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1087</td>
+                    <td>2023-05-17</td>
+                    <td>부산지원단</td>
+                    <td>홍길동</td>
+                    <td>집행신청서 접수</td>
+                    <td>접수</td>
+                    <td>-</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1086</td>
+                    <td>2023-05-14</td>
+                    <td>가락센터</td>
+                    <td>홍길서</td>
+                    <td>집행신청서 접수</td>
+                    <td>접수</td>
+                    <td>-</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1085</td>
+                    <td>2023-05-11</td>
+                    <td>하남지원센터</td>
+                    <td>홍길남</td>
+                    <td>집행신청서 접수</td>
+                    <td>접수</td>
+                    <td>-</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1084</td>
+                    <td>2023-05-10</td>
+                    <td>동작구지원단</td>
+                    <td>홍길북</td>
+                    <td>집행신청서 접수</td>
+                    <td>진행중</td>
+                    <td>-</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td></td>
+                    <td>2023-05-10</td>
+                    <td>-</td>
+                    <td>관리자</td>
+                    <td>[re]집행신청서 접수</td>
+                    <td>답변완료</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1083</td>
+                    <td>2023-05-09</td>
+                    <td>고려학관</td>
+                    <td>이말년</td>
+                    <td>집행신청서 접수</td>
+                    <td>완료</td>
+                    <td>2023-05-10</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td></td>
+                    <td>2023-05-09</td>
+                    <td>-</td>
+                    <td>관리자</td>
+                    <td>[re]집행신청서 접수</td>
+                    <td>답변완료</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1082</td>
+                    <td>2023-05-08</td>
+                    <td>진주어머니회</td>
+                    <td>삼말년</td>
+                    <td>집행신청서 접수</td>
+                    <td>완료</td>
+                    <td>2023-05-09</td>
+                    <td>Y</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td></td>
+                    <td>2023-05-08</td>
+                    <td>-</td>
+                    <td>관리자</td>
+                    <td>[re]집행신청서 접수</td>
+                    <td>답변완료</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr class="admin_re">
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>1081</td>
+                    <td>2023-05-07</td>
+                    <td>마산지원단</td>
+                    <td>사말년</td>
+                    <td>집행신청서 접수</td>
+                    <td>완료</td>
+                    <td>2023-05-08</td>
+                    <td>Y</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- ######################################################## END ######################################################## -->
+          </form>
+          <div class="ht-150 d-flex align-items-center justify-content-center">
+            <ul class="pagination pagination-circle mg-b-0">
+              <li class="page-item hidden-xs-down">
+                <a class="page-link" href="#" aria-label="First"><i class="fa fa-angle-double-left"></i></a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous"><i class="fa fa-angle-left"></i></a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item hidden-xs-down"><a class="page-link" href="#">3</a></li>
+              <li class="page-item hidden-xs-down"><a class="page-link" href="#">4</a></li>
+              <li class="page-item disabled"><span class="page-link">...</span></li>
+              <li class="page-item"><a class="page-link" href="#">10</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next"><i class="fa fa-angle-right"></i></a>
+              </li>
+              <li class="page-item hidden-xs-down">
+                <a class="page-link" href="#" aria-label="Last"><i class="fa fa-angle-double-right"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div><!-- br-section-wrapper -->
+      </div><!-- br-pagebody -->
+      <footer class="br-footer">
+        <div class="footer-left">
+          <div class="mg-b-2">Copyright &copy; 2023. SYSCUSS Corp. All rights reserved.</div>
+          <!-- <div>Attentively and carefully made by ThemePixels.</div> -->
+        </div>
+      </footer>
+    </div><!-- br-mainpanel -->
+    <!-- ########## END: MAIN PANEL ########## -->
+
+<!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/perfect-scrollbar/perfect-scrollbar.min.js"></script> 
+    <script src="js/qvey.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+      $('#compMem tr td').on('click', function(){
+        location.href='cont_mod.html';
+      });
+      $('#searchDateA, #searchDateB').datepicker({
+        showOtherMonths: true
+      });
+    </script>
+  </body>
+</html>
