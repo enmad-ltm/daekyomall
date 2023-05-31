@@ -225,15 +225,18 @@ function joinStatPrint (stVal){
   }
 
 
+  function fileRmv(){
+    $('.file-wrap').addClass('d-none');
+    $('#uploadBtn').removeClass('d-none');
+  }
 
-
-  function passChkFn (chkType){
+  function passChkFn (chkType, adminStat){
     var passA = $('#passA').val();
     var passB = $('#passB').val();
     var passC = 'asdf'; // 임시 패스워드 => 추후 저장된 각 패스워드 서버 로딩 필요
     var filePath = 'upload_file/'; // 임시 업로드파일 경로
     var fileName = 'example.xlsx'; // 임시 업로드파일명
-    var adminStat = 'n'; // 관리자의 경우 y로 업데이트
+    // var adminStat = 'n'; // 관리자의 경우 y로 업데이트
     // 업로드파일 있을 경우 파일 경로 로딩, 매칭 필요
     switch (chkType) {
       case 'saveNew': // 신규 주문 등록
@@ -248,21 +251,24 @@ function joinStatPrint (stVal){
         break;
         // 등록 문장 추가
     case 'save': // 게시물 수정
-        if(passA == '') {
+        if(passA == '' && adminStat == 'n') {
             modalOpen("passChkF","Error: blank", "비밀번호를 입력해주세요.");
-        } else if (passA != passC){
+        } else if (passA != passC && adminStat == 'n'){
             modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
-        } else if (passA == passC){
+        } else if (passA == passC && adminStat == 'n'){
             modalOpen("passChkT",'','','수정되었습니다.');
+        } else if (adminStat == 'y') {
+            alert('저장되었습니다.');
+            go2path('admin_index');
         }
         break;
         // 업데이트 문장 추가
     case 'remove': // 게시물 삭제
-        if(passA == '') {
+        if(passA == '' && adminStat == 'n') {
             modalOpen("passChkF","Error: blank", "비밀번호를 입력해주세요.");
-        } else if (passA != passC){
+        } else if (passA != passC && adminStat == 'n'){
             modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
-        } else if (passA == passC){
+        } else if ((passA == passC && adminStat == 'n') || adminStat == 'y'){
             modalOpen('rmvConfirm');
         }
         // 삭제 문장 추가
@@ -272,7 +278,7 @@ function joinStatPrint (stVal){
             modalOpen("passChkF","Error: blank", "파일을 다운로드 하시려면 비밀번호를 입력해주세요.");
         } else if (passA !== passC && adminStat == 'n') {
             modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
-        } else if (passA == passC && (adminStat == 'n' || adminStat == 'y')) {
+        } else if (passA == passC && (adminStat == 'n')) {
             // 다운로드 동작 추가, java header 지정 내용 참고 https://krepo.tistory.com/3 혹은 다른방식 사용해도 무관
             console.log(filePath+fileName);
             $.fileDownload(filePath+fileName, {
@@ -297,8 +303,21 @@ function joinStatPrint (stVal){
         }
     }
   }
+  var useNum = true;
+  function addRe () {
+    let useHtml = '<div class="form-layout form-layout-3 mg-t-30"><div class="row no-gutters"><div class="col-md-2"><div class="form-group ttl">제목</div></div><div class="col-md-4 mg-t--1 mg-md-t-0"><div class="form-group mg-md-l--1 d-flex align-items-center"><input class="form-control" type="text" name="" placeholder="내용 입력" value="[re]진행신청서 접수" readonly></div></div><div class="col-md-2 mg-t--1 mg-md-t-0"><div class="form-group mg-md-l--1 ttl">작성일</div></div><div class="col-md-4 mg-t--1 mg-md-t-0"><div class="form-group mg-md-l--1 d-flex align-items-center">'+datePrint()+'</div></div></div><div class="form-layout-cont bd pd-20 bd-t-0"><textarea class="form-control" type="text" name="content" placeholder="내용 입력"></textarea></div></div>';
+    if (useNum == true){
+        $('.form-layout-3').after(useHtml);
+        $('.btn.btn-outline-primary.pd-x-50').addClass('d-none');
+    }
+    useNum = false;
+  }
 
-
+function datePrint(){
+    var now = new Date();
+    var datePrint = now.getFullYear()+'-'+(('00'+(now.getMonth()+1)).slice(-2))+'-'+(('00'+now.getDate()).slice(-2));
+    return datePrint;
+}
 
 
 

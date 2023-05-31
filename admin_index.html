@@ -107,7 +107,7 @@
             </div>
             <div class="d-flex align-items-center justify-content-between wd-100p mg-b-10">
               <div class="cnt mg-y-20">총 <span class="text-primary">123</span>건이 있습니다.</div>
-              <div id="eventCreate" onclick="go2path('cont_new')" class="d-flex btn btn-outline-light"><i class="icon ion-ios-compose-outline tx-16 mg-r-4"></i> 신규 등록</div>
+              <div id="eventCreate" onclick="" class="d-flex btn btn-outline-light"><i class="icon ion-ios-download-outline tx-16 mg-r-4"></i> 엑셀 다운로드</div>
             </div>
             <!-- ######################################################## TABELE ######################################################## -->
             <div class="bd bd-gray-300 rounded table-responsive applicant-tbl-wrap">
@@ -274,7 +274,7 @@
     </div><!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 
-<!-- remove confirm -->
+<!-- logout confirm -->
 <div id="logoutConfirm" class="modal fade">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content tx-size-sm">
@@ -304,7 +304,7 @@
     <script src="js/common.js"></script>
     <script>
       $('#compMem tr td').on('click', function(){
-        location.href='cont_mod.html';
+        location.href='admin_cont_mod.html';
       });
       $('#searchDateA, #searchDateB').datepicker({
         showOtherMonths: true

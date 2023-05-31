@@ -27,10 +27,13 @@
   <body>
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel kr-font">
-      <div class="br-pageheader">
+      <div class="br-pageheader justify-content-between">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
           <img class="mg-r-10" src="img/daekyo_ci.png" alt="" /><img src="img/syscuss_ci.png" alt="">
         </nav>
+        <div>
+          <i class="icon ion-power">&nbsp;</i><a class="tx-gray-700 tx-bold" href="javascript:void(0)" onclick="modalOpen('logoutConfirm')">로그아웃</a>
+        </div>
       </div><!-- br-pageheader -->
       <div class="br-pagetitle">
         <i class="icon ion-ios-body-outline"></i>
@@ -50,7 +53,7 @@
                   </div>
                   <div class="col-lg-2 mg-t--1 mg-md-t-0">
                     <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="2023-05-17">
+                      <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="2023-05-17" readonly>
                     </div>
                   </div>
                   <div class="col-lg-2 mg-t--1 mg-md-t-0">
@@ -58,7 +61,7 @@
                   </div>
                   <div class="col-lg-2 mg-t--1 mg-md-t-0">
                     <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="email" placeholder="내용 입력" value="부산지원단">
+                      <input class="form-control" type="text" name="email" placeholder="내용 입력" value="부산지원단" readonly>
                     </div>
                   </div>
                   <div class="col-lg-2 mg-t--1 mg-md-t-0">
@@ -66,7 +69,7 @@
                   </div>
                   <div class="col-lg-2 mg-t--1 mg-md-t-0">
                     <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="email" placeholder="내용 입력" value="홍길동">
+                      <input class="form-control" type="text" name="email" placeholder="내용 입력" value="홍길동" readonly>
                     </div>
                   </div>
                 </div><!-- row -->
@@ -76,7 +79,7 @@
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
                       <div class="form-group mg-md-l--1">
-                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="donghaebright@qmail.com">
+                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="donghaebright@qmail.com" readonly>
                       </div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
@@ -84,15 +87,20 @@
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
                       <div class="form-group mg-md-l--1">
-                        <input class="form-control" type="text" name="email" placeholder="내용 입력" value="010-1234-1234">
+                        <input class="form-control" type="text" name="email" placeholder="내용 입력" value="010-1234-1234" readonly>
                       </div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
                       <div class="form-group mg-md-l--1 ttl">진행상태</div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input class="form-control readonly" type="text" name="workStat" value="접수" readonly>
+                      <div id="selectBg" class="form-group mg-md-l--1">
+                        <select id="reservStat" class="form-control select2" data-placeholder="Choose Browser">
+                          <option value="ansWait">답변대기</option>
+                          <option value="receipt">접수</option>
+                          <option value="progress">진행</option>
+                          <option value="fin">완료</option>
+                        </select>
                       </div>
                     </div>
                 </div><!-- row -->
@@ -102,7 +110,7 @@
                     </div>
                     <div class="col-md-4 mg-t--1 mg-md-t-0">
                       <div class="form-group mg-md-l--1 d-flex align-items-center">
-                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="진행신청서 접수">
+                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력" value="진행신청서 접수" readonly>
                       </div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
@@ -110,16 +118,11 @@
                     </div>
                     <div class="col-md-4 mg-t--1 mg-md-t-0">
                       <div class="form-group mg-md-l--1 d-flex align-items-center">
-                        <div class="file-wrap">
-                          <a href="javascript:void(0)" onclick="passChkFn('download', 'n')"><i class="icon ion-ios-download-outline tx-16 mg-r-4"></i>&nbsp;<span class="fileName">첨부파일_제목.xls</span>&nbsp;</a>
-                          <button id="testX" type="button" class="file-rmv-btn" onclick="fileRmv()">
-                            <i class="icon ion-close-round tx-12"></i>
-                          </button>
-                        </div>
-                        <div id="uploadBtn" onclick="modalOpen('fileUpload')" class="btn btn-outline-light d-none">
+                        <a href="javascript:void(0)" onclick="passChkFn('download', 'y')"><i class="icon ion-ios-download-outline tx-16 mg-r-4"></i>&nbsp;<span class="fileName">첨부파일_제목.xls</span>&nbsp;</a>
+                        <!-- <div onclick="modalOpen('fileUpload')" class="btn btn-outline-light">
                           <i class="icon ion-ios-upload-outline tx-16 mg-r-4"></i> <span>첨부파일 업로드</span>
                           <input class="form-control" type="hidden" name="upFile">
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                 </div><!-- row -->
@@ -132,8 +135,8 @@
 무궁화 삼천리 화려강산 대한사람 대한으로 길이보전하세
 이 기상과 이 맘으로 충성을 다하여 괴로우나 즐거우나 나라사랑하세
 무궁화 삼천리 화려강산 대한사람 대한으로 길이보전하세</textarea>
-                </div><!-- form-group -->
-                <div class="row no-gutters no-bd-t">
+                </div>
+                <!-- <div class="row no-gutters no-bd-t">
                     <div class="col-md-2">
                       <div class="form-group ttl">비밀번호</div>
                     </div>
@@ -142,12 +145,18 @@
                         <input id="passA" class="form-control" type="password" name="" placeholder="영문+숫자 6자리">
                       </div>
                     </div>
-                </div><!-- row -->
-              </div><!-- form-layout -->
-              <div class="mg-t-40 tx-center">
-                <div class="d-block tx-right"><a href="javascript:void(0)" onclick="passChkFn('remove', 'n');" class="btn btn-outline-danger pd-x-50">삭제</a></div>
-                <a href="javascript:void(0)" onclick="go2path('index')" class="btn btn-secondary pd-x-50">목록</a>
-                <a href="javascript:passChkFn('save','n')" class="btn btn-primary pd-x-50">저장</a>
+                  </div> -->
+              </div>
+              <!--  -->
+              <!--  -->
+                <div class="mg-t-40 tx-center">
+                  <div class="d-block tx-right">
+                    <a href="javascript:void(0)" onclick="addRe();" class="btn btn-outline-primary pd-x-50">답변</a>
+                    <a href="javascript:void(0)" onclick="passChkFn('remove', 'y');" class="btn btn-outline-danger pd-x-50">삭제</a>
+                  </div>
+                  <a href="javascript:void(0)" onclick="go2path('index')" class="btn btn-secondary pd-x-50">목록</a>
+                  <a href="javascript:modalOpen('saveConfirm')" class="btn btn-primary pd-x-50">저장</a>
+                </div>
               </div>
             <!-- ######################################################## End ######################################################## -->
           </form>
@@ -163,32 +172,6 @@
     <!-- ########## END: MAIN PANEL ########## -->
 
     <!-- ########## START: MODAL ########## -->
-<!-- fileUpload -->
-<div id="fileUpload" class="modal fade show" style="padding-right: 17px;">
-  <div class="modal-dialog modal-md modal-dialog-centered" role="document">
-    <div class="modal-content bd-0 tx-14">
-      <div class="modal-header pd-x-20">
-        <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">첨부파일 업로드</h6>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body pd-20">
-        <p class="mg-b-5">
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile"></label>
-          </div>
-        </p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-medium">등록</button>
-        <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-medium" data-dismiss="modal">취소</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- pass bool F-->
 <div id="passChkF" class="modal fade">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -237,7 +220,7 @@
         <p class="mg-b-20 mg-x-20">게시물을 삭제하시겠습니까?</p>
         <input type="hidden" value="">
         <div class="modal-footer justify-content-center bd-t-0">
-          <button id="gotoListBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="alert('삭제되었습니다.'); go2path('index')">확인</button>
+          <button id="gotoListBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="alert('삭제되었습니다.'); go2path('admin_index')">확인</button>
           <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
         </div>
       </div>
@@ -245,6 +228,45 @@
   </div>
 </div>
 
+<!-- save confirm -->
+<div id="saveConfirm" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content tx-size-sm">
+      <div class="modal-body tx-center pd-y-20 pd-x-20">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 저장</h4>
+        <p class="mg-b-20 mg-x-20">작성하신 글을 저장하시겠습니까?</p>
+        <input type="hidden" value="">
+        <div class="modal-footer justify-content-center bd-t-0">
+          <button id="gotoListBtn2" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="passChkFn('save', 'y')">확인</button>
+          <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- logout confirm -->
+<div id="logoutConfirm" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content tx-size-sm">
+      <div class="modal-body tx-center pd-y-20 pd-x-20">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 로그아웃</h4>
+          <p class="mg-b-20 mg-x-20">로그아웃 하시겠습니까?</p>
+          <input type="hidden" value="">
+          <div class="modal-footer justify-content-center bd-t-0">
+          <button id="logoutBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="go2path('admin_signin')">확인</button>
+          <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
 
 <!-- modal -->
 <!-- ########## END: MAIN PANEL ########## -->
@@ -256,10 +278,27 @@
     <script src="js/qvey.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/common.js"></script>
-
     <script>
-
-
+      function reservStatChk() {
+        switch($('#reservStat').val()){
+          case 'receipt' :
+          $('#selectBg').css('background-color','#fff');
+          break;
+          case 'ansWait' :
+          $('#selectBg').css('background-color','rgba(240,164,164,0.1)');
+          break;
+          case 'progress' :
+          $('#selectBg').css('background-color','rgba(164, 197, 240, 0.25)');
+          break;
+          case 'fin' :
+          $('#selectBg').css('background-color','#fff');
+          break;
+        }
+      }
+      reservStatChk();
+      $('#reservStat').on('change', function(){
+        reservStatChk();
+      });
     </script>
   </body>
 </html>
