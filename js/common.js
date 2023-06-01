@@ -320,6 +320,15 @@ function datePrint(){
 }
 
 
-
+function allChk (){
+    var ipObj = $('#compMem thead input:checkbox');
+    ipObj.click(function(){
+        if((ipObj).is(':checked')){
+            $('#compMem tbody input:checkbox').prop('checked',true);
+        } else {
+            $('#compMem tbody input:checkbox').prop('checked',false);
+        }
+    });
+}
 
 
