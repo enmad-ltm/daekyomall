@@ -242,11 +242,12 @@ function joinStatPrint (stVal){
       case 'saveNew': // 신규 주문 등록
       // !필수 항목 작성 검증 추가 필요
         if(passA == '' || passB == '') {
-          modalOpen("passChkF","Error: blank", "비밀번호를 입력해주세요.");
+            modalOpen("passChkF","Error: blank", "비밀번호를 입력해주세요.");
         } else if (passA != passB){
-          modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
+            modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
         } else if(passA == passB){
-          modalOpen("passChkT");
+            // 필수항목 검증 필요
+            modalOpen("passChkT");
         }
         break;
         // 등록 문장 추가
@@ -256,6 +257,7 @@ function joinStatPrint (stVal){
         } else if (passA != passC && adminStat == 'n'){
             modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
         } else if (passA == passC && adminStat == 'n'){
+            // 필수항목 검증 필요
             modalOpen("passChkT",'','','수정되었습니다.');
         } else if (adminStat == 'y') {
             alert('저장되었습니다.');
@@ -301,6 +303,18 @@ function joinStatPrint (stVal){
                 }
             });
         }
+        break;
+    
+    case 'articleAccess': //
+        if(passA == ''){
+            alert('비밀번호를 입력해주세요');
+        } else if(passA != passC){
+            alert('비밀번호가 들렸습니다');
+        } else if (passA == passC){
+            location.href='cont_mod.html';
+        }
+        break;
+
     }
   }
   var useNum = true;
