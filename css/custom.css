@@ -134,10 +134,12 @@ img.qr-img:hover {
     right: 0;
 }
 @media (min-width: 992px) {
-    #eventCreate {
+    #eventCreate, #excelDown, #sampleDown {
         justify-content: center;
         align-items: center;
         flex: 0 0 16.66667%;
+    }
+    #excelDown {
         max-width: 12%;
     }
 }
