@@ -134,13 +134,10 @@ img.qr-img:hover {
     right: 0;
 }
 @media (min-width: 992px) {
-    #eventCreate, #excelDown, #sampleDown {
+    #eventCreate, #sampleDown, #excelDown, #addNotice {
         justify-content: center;
         align-items: center;
         flex: 0 0 16.66667%;
-    }
-    #excelDown {
-        max-width: 12%;
     }
 }
 @media (max-width: 393px) {
@@ -773,4 +770,15 @@ button.file-rmv-btn:hover {
 button.file-rmv-btn:visited, button.file-rmv-btn:focus, button.file-rmv-btn:focus-visible {
     border: 0;
     outline: 0;
+}
+
+@media (min-width: 768px){
+    .bd-r-0-fc-min768 {
+        border-right: 0!important;
+    }
+}
+@media (max-width: 767px){
+    .form-group.ttl {
+        border-right: 1px solid #ced4da;
+    }
 }

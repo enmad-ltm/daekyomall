@@ -314,7 +314,11 @@ function joinStatPrint (stVal){
             location.href='cont_mod.html';
         }
         break;
-
+    case 'saveNotice': // 관리자; 공지사항 등록, jwt 등 검증 => db save => location
+        //검증 성공시
+        modalOpen("validChkT");
+        //실패시
+        // modalOpen("validChkF");
     }
   }
   var useNum = true;

@@ -45,106 +45,30 @@
             <!-- ######################################################## Contents ######################################################## -->
             <div class="form-layout form-layout-3">
                 <div class="row no-gutters">
-                  <div class="col-lg-2">
-                    <div class="form-group ttl">주문일자</div>
-                  </div>
-                  <div class="col-lg-2 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="lastname" placeholder="내용 입력">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1 ttl">부서(센터명)</div>
-                  </div>
-                  <div class="col-lg-2 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="email" placeholder="내용 입력">
-                    </div>
-                  </div>
-                  <div class="col-lg-2 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1 ttl">주문자명</div>
-                  </div>
-                  <div class="col-lg-2 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1">
-                      <input class="form-control" type="text" name="email" placeholder="내용 입력">
-                    </div>
-                  </div>
-                </div><!-- row -->
-                <div class="row no-gutters no-bd-t">
-                    <div class="col-md-2">
-                      <div class="form-group ttl">이메일주소</div>
-                    </div>
-                    <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력">
-                      </div>
-                    </div>
-                    <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1 ttl">전화번호</div>
-                    </div>
-                    <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input class="form-control" type="text" name="email" placeholder="내용 입력">
-                      </div>
-                    </div>
-                    <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1 ttl">진행상태</div>
-                    </div>
-                    <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input class="form-control readonly" type="text" name="workStat" value="접수" readonly>
-                      </div>
-                    </div>
-                </div><!-- row -->
-                <div class="row no-gutters no-bd-t">
                     <div class="col-md-2">
                       <div class="form-group ttl">제목</div>
                     </div>
                     <div class="col-md-4 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input class="form-control" type="text" name="lastname" placeholder="내용 입력">
+                      <div class="form-group bd-r-0-fc-min768">
+                        <input id="noticeTtl" class="form-control" type="text" name="" placeholder="내용 입력">
                       </div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1 ttl">첨부파일</div>
+                        <div class="form-group ttl">작성일자</div>
                     </div>
                     <div class="col-md-4 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <div onclick="modalOpen('fileUpload')" class="btn btn-outline-light">
-                          <i class="icon ion-ios-upload-outline tx-16 mg-r-4"></i> <span>첨부파일 업로드</span>
-                          <input class="form-control" type="hidden" name="upFile">
+                        <div class="form-group">
+                            <input id="datePrt" class="form-control" type="text" name="" value="" readonly>
                         </div>
-                      </div>
                     </div>
                 </div><!-- row -->
-
                 <div class="form-layout-cont bd pd-20 bd-t-0">
                     <textarea class="form-control" type="text" name="content" placeholder="내용 입력"></textarea>
                 </div><!-- form-group -->
-                <div class="row no-gutters no-bd-t">
-                    <div class="col-md-2">
-                      <div class="form-group ttl">비밀번호</div>
-                    </div>
-                    <div class="col-md-10 mg-t--1 mg-md-t-0">
-                      <div class="form-group mg-md-l--1">
-                        <input id="passA" class="form-control" type="password" name="" placeholder="영문+숫자 6자리">
-                      </div>
-                    </div>
-                </div><!-- row -->
-                <div class="row no-gutters no-bd-t">
-                  <div class="col-md-2">
-                    <div class="form-group ttl">비밀번호 확인</div>
-                  </div>
-                  <div class="col-md-10 mg-t--1 mg-md-t-0">
-                    <div class="form-group mg-md-l--1">
-                      <input id="passB" class="form-control" type="password" name="" placeholder="다시입력해주세요">
-                    </div>
-                  </div>
-              </div><!-- row -->
               </div><!-- form-layout -->
               <div class="mg-t-40 tx-center">
-                <a href="javascript:void(0)" onclick="go2path('index')" class="btn btn-secondary pd-x-50">목록</a>
-                <a href="javascript:passChkFn()" class="btn btn-primary pd-x-50">저장</a>
+                <a href="javascript:void(0)" onclick="go2path('admin_index')" class="btn btn-secondary pd-x-50">목록</a>
+                <a href="javascript:passChkFn('saveNotice')" class="btn btn-primary pd-x-50">저장</a>
               </div>
             <!-- ######################################################## End ######################################################## -->
           </form>
@@ -187,7 +111,7 @@
 </div>
 
 <!-- pass bool F-->
-<div id="passChkF" class="modal fade">
+<div id="validChkF" class="modal fade">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content tx-size-sm">
       <div class="modal-body tx-center pd-y-20 pd-x-20">
@@ -197,15 +121,14 @@
         <i class="icon icon ion-ios-close-outline tx-100 tx-danger lh-1 mg-t-20 d-inline-block"></i>
         <h4 id="modalTtl" class="tx-danger  tx-semibold mg-b-20"></h4>
         <p id="modalCopy" class="mg-b-20 mg-x-20"></p>
-        <button type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20" data-dismiss="modal" aria-label="Close">
-          Continue</button>
+        <button type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20" data-dismiss="modal" aria-label="Close">확인</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- pass bool T-->
-<div id="passChkT" class="modal fade">
+<div id="validChkT" class="modal fade">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content tx-size-sm">
       <div class="modal-body tx-center pd-y-20 pd-x-20">
@@ -213,9 +136,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <i class="icon ion-ios-checkmark-outline tx-100 tx-success lh-1 mg-t-20 d-inline-block"></i>
-        <h4 class="tx-success tx-semibold mg-b-20">Congratulations!</h4>
-        <p class="mg-b-20 mg-x-20">요청이 완료되었습니다.<br />대기해 주시면 담당자가 답글로 안내드리겠습니다.</p>
-        <button onclick="go2path('index')" type="button" class="btn btn-success tx-11 tx-uppercase pd-y-15 pd-x-40 tx-mont tx-medium mg-b-20" >완료</button>
+        <h4 class="tx-success tx-semibold mg-b-20">완료</h4>
+        <p class="mg-b-20 mg-x-20">공지사항이 작성되었습니다.</p>
+        <button onclick="go2path('admin_index')" type="button" class="btn btn-success tx-11 tx-uppercase pd-y-15 pd-x-40 tx-mont tx-medium mg-b-20" >완료</button>
       </div>
     </div>
   </div>
@@ -233,18 +156,7 @@
     <script src="js/modal.js"></script>
     <script src="js/common.js"></script>
     <script>
-
-      function passChkFn (){
-        var passA = $('#passA').val();
-        var passB = $('#passB').val();
-        if(passA == '' || passB == '') {
-          modalOpen("passChkF","Error: blank", "비밀번호를 입력해주세요.");
-        } else if (passA != passB){
-          modalOpen("passChkF", "Error: 패스워드 불일치", "패스워드를 확인해주세요.");
-        } else if(passA == passB){
-          modalOpen("passChkT");
-        }
-      }
+      $('#datePrt').val(datePrint());
     </script>
   </body>
 </html>
