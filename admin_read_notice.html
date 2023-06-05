@@ -32,7 +32,7 @@
           <img src="img/daekyo_ci.png" alt="" /><img src="img/enmad_ci.png" alt="">
         </nav>
         <div>
-          <i class="icon ion-power">&nbsp;</i><a class="tx-gray-700 tx-bold" href="javascript:void(0)" onclick="modalOpen('logoutConfirm')">로그아웃</a>
+            <i class="icon ion-power">&nbsp;</i><a class="tx-gray-700 tx-bold" href="javascript:void(0)" onclick="modalOpen('logoutConfirm')">로그아웃</a>
         </div>
       </div><!-- br-pageheader -->
       <div class="br-pagetitle">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-4 mg-t--1 mg-md-t-0">
                       <div class="form-group bd-r-0-fc-min768">
-                        <input id="noticeTtl" class="form-control" type="text" name="" placeholder="내용 입력">
+                        <input id="noticeTtl" class="form-control" type="text" name="" readonly value="공지사항 제목 테스트">
                       </div>
                     </div>
                     <div class="col-md-2 mg-t--1 mg-md-t-0">
@@ -66,12 +66,36 @@
                     </div>
                 </div><!-- row -->
                 <div class="form-layout-cont bd pd-20 bd-t-0">
-                    <textarea id="noticeCont" class="form-control" type="text" name="content" placeholder="내용 입력"></textarea>
+                    <textarea class="form-control" type="text" name="content" readonly>
+For all the times that you rained on my parade
+And all the clubs you get in using my name
+You think you broke my heart, oh, girl, for goodness' sake
+You think I'm crying on my own, well, I ain't
+And I didn't wanna write a song
+'Cause I didn't want anyone thinkin' I still care, I don't, but
+You still hit my phone up
+And baby, I'll be movin' on
+And I think you should be somethin' I don't wanna hold back
+Maybe you should know that
+                    </textarea>
                 </div><!-- form-group -->
               </div><!-- form-layout -->
-              <div class="mg-t-40 tx-center">
-                <a href="javascript:void(0)" onclick="go2path('admin_index')" class="btn btn-secondary pd-x-50">목록</a>
-                <a href="javascript:modalOpen('saveConfirm');" class="btn btn-primary pd-x-50">저장</a>
+              <div class="mg-t-40 d-flex align-items-center justify-content-between wd-100p">
+                <div>
+                    <a class="d-block" href="javascript:void(0)" onclick="">
+                        <span>이전글 : </span>
+                        <span>이전 공지사항 제목</span>
+                    </a>
+                    <!-- 글 blank 일때 class 'no-click'추가 -->
+                    <a class="d-block mg-t-5 no-click" href="javascript:void(0)" onclick="">
+                        <span>다음글 : </span>
+                        <span class="">다음 글이 없습니다</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" onclick="go2path('admin_index');" class="btn btn-secondary pd-x-50">목록</a>
+                    <a href="javascript:void(0)" onclick="modalOpen('rmvConfirm');" class="btn btn-outline-danger pd-x-50">삭제</a>
+                </div>
               </div>
             <!-- ######################################################## End ######################################################## -->
           </form>
@@ -113,79 +137,45 @@
   </div>
 </div>
 
-<!-- pass bool F-->
-<div id="validChkF" class="modal fade">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content tx-size-sm">
-      <div class="modal-body tx-center pd-y-20 pd-x-20">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <i class="icon icon ion-ios-close-outline tx-100 tx-danger lh-1 mg-t-20 d-inline-block"></i>
-        <h4 id="modalTtl" class="tx-danger  tx-semibold mg-b-20"></h4>
-        <p id="modalCopy" class="mg-b-20 mg-x-20"></p>
-        <button type="button" class="btn btn-danger tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium mg-b-20" data-dismiss="modal" aria-label="Close">확인</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pass bool T-->
-<div id="validChkT" class="modal fade">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content tx-size-sm">
-      <div class="modal-body tx-center pd-y-20 pd-x-20">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <i class="icon ion-ios-checkmark-outline tx-100 tx-success lh-1 mg-t-20 d-inline-block"></i>
-        <h4 class="tx-success tx-semibold mg-b-20">완료</h4>
-        <p class="mg-b-20 mg-x-20">공지사항이 작성되었습니다.</p>
-        <button onclick="go2path('admin_index')" type="button" class="btn btn-success tx-11 tx-uppercase pd-y-15 pd-x-40 tx-mont tx-medium mg-b-20" >완료</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- save confirm -->
-<div id="saveConfirm" class="modal fade">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content tx-size-sm">
-      <div class="modal-body tx-center pd-y-20 pd-x-20">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 저장</h4>
-        <p class="mg-b-20 mg-x-20">작성하신 글을 저장하시겠습니까?</p>
-        <input type="hidden" value="">
-        <div class="modal-footer justify-content-center bd-t-0">
-          <button id="gotoListBtn2" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="passChkFn('saveNotice', 'y')">확인</button>
-          <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
+<!-- remove confirm -->
+<div id="rmvConfirm" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content tx-size-sm">
+        <div class="modal-body tx-center pd-y-20 pd-x-20">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 삭제</h4>
+          <p class="mg-b-20 mg-x-20">게시물을 삭제하시겠습니까?</p>
+          <input type="hidden" value="">
+          <div class="modal-footer justify-content-center bd-t-0">
+            <button id="gotoListBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="passChkFn('rmvNotice','y')">확인</button>
+            <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <!-- logout confirm -->
 <div id="logoutConfirm" class="modal fade">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content tx-size-sm">
-      <div class="modal-body tx-center pd-y-20 pd-x-20">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 로그아웃</h4>
-          <p class="mg-b-20 mg-x-20">로그아웃 하시겠습니까?</p>
-          <input type="hidden" value="">
-          <div class="modal-footer justify-content-center bd-t-0">
-          <button id="logoutBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="go2path('admin_signin')">확인</button>
-          <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
-          </div>
-      </div>
-      </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content tx-size-sm">
+        <div class="modal-body tx-center pd-y-20 pd-x-20">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="tx-primary tx-semibold mg-y-20">Confirm: 로그아웃</h4>
+            <p class="mg-b-20 mg-x-20">로그아웃 하시겠습니까?</p>
+            <input type="hidden" value="">
+            <div class="modal-footer justify-content-center bd-t-0">
+            <button id="logoutBtn" type="button" class="btn btn-primary tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" onclick="go2path('admin_signin')">확인</button>
+            <button type="button" class="btn btn-light tx-14-force tx-uppercase pd-x-40-force pd-y-10-force tx-mont tx-medium" data-dismiss="modal" aria-label="Close">취소</button>
+            </div>
+        </div>
+        </div>
+    </div>
   </div>
-</div>
 
 <!-- modal -->
 <!-- ########## END: MAIN PANEL ########## -->

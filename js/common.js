@@ -314,11 +314,31 @@ function joinStatPrint (stVal){
             location.href='cont_mod.html';
         }
         break;
-    case 'saveNotice': // 관리자; 공지사항 등록, jwt 등 검증 => db save => location
-        //검증 성공시
-        modalOpen("validChkT");
-        //실패시
-        // modalOpen("validChkF");
+    case 'saveNotice': // 
+        var noticeTtlVal = $('#noticeTtl').val().trim().length;
+        var noticeContVal = $('#noticeCont').val().trim().length;
+        if(adminStat =='y' && (noticeTtlVal > 0) && (noticeContVal >0)) {
+            alert('저장되었습니다.');
+            go2path('admin_index');
+        } else if (adminStat =='y' && ((noticeTtlVal == 0 || noticeContVal == 0) || (noticeTtlVal == 0 && noticeContVal == 0))){
+            alert('제목 또는 내용을 입력해주세요.');
+            return false;
+        } else if (adminStat =='n'){
+            alert('잘못된 접근입니다.');
+            go2path('admin_signin');
+            return false;
+        }
+        break;
+    case 'rmvNotice':
+        if(adminStat == 'y'){
+            alert('삭제되었습니다.');
+            go2path('admin_index');
+        } else if(adminStat =='n'){
+            alert('잘못된 접근입니다.');
+            go2path('admin_signin');
+            return false;
+        }
+        break;
     }
   }
   var useNum = true;

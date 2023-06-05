@@ -12,7 +12,7 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
 
-    <title>대교몰(사용자)</title>
+    <title>대교몰(관리자)</title>
 
     <!-- vendor css -->
     <link href="lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -147,7 +147,7 @@
                     <th>첨부파일</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="general-bd">
                   <tr>
                     <th scope="row"><input type="checkbox"></th>
                     <td>1087</td>
@@ -326,8 +326,11 @@
     <script src="js/common.js"></script>
     <script>
       allChk();
-      $('#compMem tr td').on('click', function(){
+      $('.general-bd tr td').on('click', function(){
         location.href='admin_cont_mod.html';
+      });
+      $('.notice-bd tr td').on('click', function(){
+        location.href='admin_read_notice.html';
       });
       $('#searchDateA, #searchDateB').datepicker({
         showOtherMonths: true

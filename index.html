@@ -144,7 +144,7 @@
                     <th>첨부파일</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="general-bd">
                   <tr>
                     <th scope="row"><input type="checkbox"></th>
                     <td>1087</td>
@@ -328,8 +328,11 @@
     <script src="js/common.js"></script>
     <script>
       allChk();
-      $('#compMem tr td').on('click', function(){
+      $('.general-bd tr td').on('click', function(){
         modalOpen('readConfirm');
+      });
+      $('.notice-bd tr td').on('click', function(){
+        location.href='read_notice.html';
       });
       $('#searchDateA, #searchDateB').datepicker({
         showOtherMonths: true
